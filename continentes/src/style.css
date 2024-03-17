@@ -116,8 +116,11 @@ input, i{
   }
 }
 
+img{
+  object-fit: cover;
+}
 
-#nomeGermany, #nomeEua, #nomeBrasil {
+#nomeGermany, #nomeEua, #nomeBrasil, #nomeIce {
   display: flex;
   font-weight: bold;
   font-size: 15px;
