@@ -1,6 +1,5 @@
-
+const darkModeButton = document.getElementById("dark-mode-toggle") as HTMLInputElement;
 function checkBoxDarkMode() {
-  const darkModeButton = document.getElementById("dark-mode-toggle") as HTMLInputElement;
   darkModeButton.addEventListener("change", () => {
     if (darkModeButton.checked) {
       setDarkMode();
@@ -23,9 +22,15 @@ const valoresSalvosDarkMode = () => {
   const recupararValorMode = localStorage.getItem("minhaClasse")
   if (recupararValorMode === "dark-mode") {
     setDarkMode();
+    salvarCheckBoxMarcado();
   }else{
     setWhiteMode();
   }
 }
 checkBoxDarkMode();
 valoresSalvosDarkMode();
+
+const salvarCheckBoxMarcado = () => {
+  darkModeButton.checked = true
+}
+
