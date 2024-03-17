@@ -261,7 +261,6 @@ const informacoesAlgeria = () => {
     const {flags, population, region, capital, name} = data[0]
     const nomePais = name.common
     bandeiraAlgeria.src = flags.png
-    console.log(data);
     infoAlgeria.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
      <br> Region: ${region} <br> Capital: ${capital} `
      nomeAlgeria.innerHTML = `${nomePais}`
@@ -278,7 +277,34 @@ const botaoPesquisar = document.querySelector(".fa-solid") as HTMLElement
 const pesquisarContinentes = () => {
   if (pesquisarPaises.value == "") {
     mensagemValorVazio();
+  }else{
+    fetch(`https://restcountries.com/v3.1/name/${pesquisarPaises.value}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      const exibirResultados = document.querySelector(".exibirResultados") as HTMLDivElement
+      const {flags, population, region, capital, name} = data[0]
+      ocultarSection();
+      exibirResultados.innerHTML = `<div class="card" style="width: 13rem;" class="resultadosPesquisa">
+      <img class="card-img-top" src="${flags.png}" alt="Card image cap">
+      <div class="card-body">
+       <pclass="card-text">${name.common}</p>
+        <p>Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+        <br> Region: ${region} <br> Capital: ${capital}</p>
+      </div>
+    </div>`
+    console.log(exibirResultados);
+    
+    })
+    .catch(erro => {
+      console.error(erro)
+    })
   }
+}
+
+const ocultarSection = () => {
+  const section = document.querySelector("section") as HTMLSelectElement
+  section.style.display = "none";
 }
 
 const mensagemValorVazio = () => {
