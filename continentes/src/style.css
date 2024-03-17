@@ -112,6 +112,11 @@ input, i{
   align-items: center;
 }
 
+.esconder{
+  display: none;
+}
+
+
 @media(max-width: 768px){
   #textoConhece{
     margin-left: auto;

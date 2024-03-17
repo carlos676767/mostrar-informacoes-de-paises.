@@ -95,6 +95,61 @@ const inputWhite = () => {
   pesquisarPaises.classList.add("white-mode");
 };
 
+
+const botaoPesquisar = document.querySelector(".fa-solid") as HTMLElement
+const pesquisarContinentes = () => {
+  if (pesquisarPaises.value == "") {
+    mensagemValorVazio();
+  }else{
+    fetch(`https://restcountries.com/v3.1/name/${pesquisarPaises.value}`)
+    .then(response => response.json())
+    .then(data => {
+      ocultarSection();
+      mostrarDiv()
+      exibirResultados(data)
+    })
+    .catch(erro => {
+      console.error(erro)
+    })
+  }
+}
+
+const mostrarDiv = () => {
+  const esconder = document.querySelector(".esconder") as HTMLDivElement;
+  esconder.style.display = "block"
+};
+const exibirResultados = (data: any) => {
+  const nomePaisBuscado = document.getElementById("nomePaisBuscado") as HTMLParagraphElement
+  const imagemPaisBuscado = document.getElementById("imagemPaisBuscado") as HTMLImageElement
+  const resultadoPesquisaPais = document.getElementById("resultadoPesquisaPais") as HTMLParagraphElement
+  const exibirResultadosDaPesquisa = document.querySelector(".exibirResultados") as HTMLDivElement
+  const {flags, population, region, capital, name} = data[0]
+  nomePaisBuscado.innerHTML = name.common
+  imagemPaisBuscado.src = flags.png
+  resultadoPesquisaPais.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+  <br> Region: ${region} <br> Capital: ${capital}`
+}
+
+const ocultarSection = () => {
+  const section = document.querySelector("section") as HTMLSelectElement
+  section.style.display = "none";
+}
+
+const mensagemValorVazio = () => {
+  Swal.fire({
+    title: 'Erro!',
+    text: 'O valor está vazio.',
+    icon: 'error',
+    confirmButtonText: 'OK'
+  });
+}
+
+
+botaoPesquisar.addEventListener("click", () => {
+ pesquisarContinentes();
+})
+
+
 checkBoxDarkMode();
 valoresSalvosDarkMode();
 
@@ -272,51 +327,3 @@ const informacoesAlgeria = () => {
 
 informacoesAlgeria()
 
-const botaoPesquisar = document.querySelector(".fa-solid") as HTMLElement
- 
-const pesquisarContinentes = () => {
-  if (pesquisarPaises.value == "") {
-    mensagemValorVazio();
-  }else{
-    fetch(`https://restcountries.com/v3.1/name/${pesquisarPaises.value}`)
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      const exibirResultados = document.querySelector(".exibirResultados") as HTMLDivElement
-      const {flags, population, region, capital, name} = data[0]
-      ocultarSection();
-      exibirResultados.innerHTML = `<div class="card" style="width: 13rem;" class="resultadosPesquisa">
-      <img class="card-img-top" src="${flags.png}" alt="Card image cap">
-      <div class="card-body">
-       <pclass="card-text">${name.common}</p>
-        <p>Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
-        <br> Region: ${region} <br> Capital: ${capital}</p>
-      </div>
-    </div>`
-    console.log(exibirResultados);
-    
-    })
-    .catch(erro => {
-      console.error(erro)
-    })
-  }
-}
-
-const ocultarSection = () => {
-  const section = document.querySelector("section") as HTMLSelectElement
-  section.style.display = "none";
-}
-
-const mensagemValorVazio = () => {
-  Swal.fire({
-    title: 'Erro!',
-    text: 'O valor está vazio.',
-    icon: 'error',
-    confirmButtonText: 'OK'
-  });
-}
-
-
-botaoPesquisar.addEventListener("click", () => {
- pesquisarContinentes();
-})
