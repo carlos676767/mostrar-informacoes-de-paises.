@@ -39,3 +39,25 @@ const naoSalvarDarkMode = () => {
 checkBoxDarkMode();
 valoresSalvosDarkMode();
 
+
+
+const obterGermanyInformacoes = () => {
+  const imagemGermany = document.getElementById("germany") as HTMLImageElement
+  const ifoGermany = document.getElementById("ifoGermany") as HTMLParagraphElement
+  const nomeGermany = document.getElementById("nomeGermany") as HTMLParagraphElement
+  fetch(`https://restcountries.com/v3.1/name/germany`)
+  .then(response => response.json())
+  .then(data => {
+    const {flags, population, region, capital, name} = data[0]
+    const nomePais = name.common
+    imagemGermany.src = flags.png
+    ifoGermany.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+     <br> Region: ${region} <br> Capital: ${capital} `
+     nomeGermany.innerHTML = `${nomePais}`
+  })
+  .catch(erro => {
+    console.error('erro ao achar o pais', erro)
+  })
+}
+
+obterGermanyInformacoes()

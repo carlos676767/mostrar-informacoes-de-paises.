@@ -103,6 +103,7 @@ input, i{
   padding: 10px;
   border-radius: 3px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  width: 25%;
 }
 
 
@@ -113,4 +114,11 @@ input, i{
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+
+#nomeGermany {
+  display: flex;
+  font-weight: bold;
+  font-size: 15px;
 }
