@@ -84,3 +84,25 @@ const obterInformacoesEua = () => {
 }
 
 obterInformacoesEua()
+
+const obterInformacoesBrazil = () => {
+  const bandeirabrasil = document.getElementById("bandeirabrasil") as HTMLImageElement
+  const infobrasil = document.getElementById("infobrasil") as HTMLParagraphElement
+  const nomeBrasil = document.getElementById("nomeBrasil") as HTMLParagraphElement
+  fetch(`https://restcountries.com/v3.1/name/brazil`)
+  .then(response => response.json())
+  .then(data => {
+    const {flags, population, region, capital, name} = data[0]
+    const nomePais = name.common
+    bandeirabrasil.src = flags.png
+    infobrasil.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+     <br> Region: ${region} <br> Capital: ${capital} `
+     nomeBrasil.innerHTML = `${nomePais}`
+     console.log(data);
+  })
+  .catch(erro => {
+    console.error('erro ao achar o pais', erro)
+  })
+}
+
+obterInformacoesBrazil()

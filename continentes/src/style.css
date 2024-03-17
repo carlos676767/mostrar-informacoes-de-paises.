@@ -117,7 +117,7 @@ input, i{
 }
 
 
-#nomeGermany {
+#nomeGermany, #nomeEua, #nomeBrasil {
   display: flex;
   font-weight: bold;
   font-size: 15px;
