@@ -3,8 +3,11 @@ function checkBoxDarkMode() {
   darkModeButton.addEventListener("change", () => {
     if (darkModeButton.checked) {
       setDarkMode();
+      cardsBlack();
+      textosBlack();
     } else {
       setWhiteMode();
+      cardsWhite();
     }
   });
 }
@@ -23,9 +26,12 @@ const valoresSalvosDarkMode = () => {
   if (recupararValorMode === "dark-mode") {
     setDarkMode();
     salvarCheckBoxMarcado();
+    cardsBlack();
+    textosBlack();
   }else{
     setWhiteMode();
     naoSalvarDarkMode();
+    cardsWhite();
   }
 }
 const salvarCheckBoxMarcado = () => {
@@ -36,9 +42,34 @@ const naoSalvarDarkMode = () => {
   darkModeButton.checked = false;
 };
 
+const cards = document.querySelectorAll(".card-body")
+const cardsBlack = () => {
+  cards.forEach(element => {
+    element.classList.add("dark-mode");
+    console.log(element);
+    element.classList.remove("white-mode");
+  });
+}
+
+const cardsWhite = () => {
+  cards.forEach(element => {
+    element.classList.add("white-mode");
+    element.classList.remove("dark-mode");
+  });
+}
+
+
+const textos = document.querySelectorAll("p")
+const textosBlack = () => {
+  textos.forEach(element => {
+    element.classList.add("dark-mode");
+    element.classList.remove("white-mode");
+  });
+}
+
+
 checkBoxDarkMode();
 valoresSalvosDarkMode();
-
 
 
 const obterGermanyInformacoes = () => {
@@ -214,3 +245,5 @@ const informacoesAlgeria = () => {
 }
 
 informacoesAlgeria()
+
+
