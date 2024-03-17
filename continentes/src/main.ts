@@ -1,13 +1,18 @@
 const darkModeButton = document.getElementById("dark-mode-toggle") as HTMLInputElement;
+const pesquisarPaises = document.getElementById("pesquisarPaises") as HTMLInputElement
+
 function checkBoxDarkMode() {
   darkModeButton.addEventListener("change", () => {
     if (darkModeButton.checked) {
       setDarkMode();
       cardsBlack();
       textosBlack();
+      inputBlack();
     } else {
       setWhiteMode();
       cardsWhite();
+      textosWhite();
+      inputWhite();
     }
   });
 }
@@ -28,10 +33,13 @@ const valoresSalvosDarkMode = () => {
     salvarCheckBoxMarcado();
     cardsBlack();
     textosBlack();
+    inputBlack();
   }else{
     setWhiteMode();
     naoSalvarDarkMode();
     cardsWhite();
+    textosWhite();
+    inputWhite();
   }
 }
 const salvarCheckBoxMarcado = () => {
@@ -59,6 +67,7 @@ const cardsWhite = () => {
 }
 
 
+
 const textos = document.querySelectorAll("p")
 const textosBlack = () => {
   textos.forEach(element => {
@@ -67,6 +76,22 @@ const textosBlack = () => {
   });
 }
 
+const textosWhite = () => {
+  textos.forEach(element => {
+    element.classList.remove("dark-mode");
+    element.classList.add("white-mode");
+  });
+}
+
+const inputBlack = () => {
+  pesquisarPaises.classList.add("dark-mode");
+  pesquisarPaises.classList.remove("white-mode");
+};
+
+const inputWhite = () => {
+  pesquisarPaises.classList.remove("dark-mode");
+  pesquisarPaises.classList.add("white-mode");
+};
 
 checkBoxDarkMode();
 valoresSalvosDarkMode();
@@ -245,5 +270,3 @@ const informacoesAlgeria = () => {
 }
 
 informacoesAlgeria()
-
-

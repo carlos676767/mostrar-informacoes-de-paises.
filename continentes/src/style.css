@@ -106,7 +106,6 @@ input, i{
   width: 25%;
 }
 
-
 @media(max-width: 768px){
   #textoConhece{
     margin-left: auto;
