@@ -107,21 +107,46 @@ input, i{
 }
 
 
-
-
 @media(max-width: 768px){
   #textoConhece{
     margin-left: auto;
     margin-right: auto;
+  };
+  .primeiraFileira{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
-}
+};
 
 img{
   object-fit: cover;
+};
+.cards{
+  display: flex;
 }
 
-#nomeGermany, #nomeEua, #nomeBrasil, #nomeIce {
+.primeiraFileira{
+  display: flex;
+  list-style: none;
+  margin-top: 30px
+};
+
+.paises1{
+  display: flex;
+  margin-right: 20px;
+}
+
+.primeiraFileira .paises1 {
+  margin-right: 35px; 
+}
+
+
+#nomeGermany, #nomeEua, #nomeBrasil, #nomeIce, #nomeafe, #nomeirais {
   display: flex;
   font-weight: bold;
   font-size: 15px;
-}
+};
+

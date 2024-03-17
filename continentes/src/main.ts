@@ -76,7 +76,7 @@ const obterInformacoesEua = () => {
     infoEua.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
      <br> Region: ${region} <br> Capital: ${capital} `
      nomeEua.innerHTML = `${nomePais}`
-     console.log(data);
+
   })
   .catch(erro => {
     console.error('erro ao achar o pais', erro)
@@ -98,7 +98,6 @@ const obterInformacoesBrazil = () => {
     infobrasil.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
      <br> Region: ${region} <br> Capital: ${capital} `
      nomeBrasil.innerHTML = `${nomePais}`
-     console.log(data);
   })
   .catch(erro => {
     console.error('erro ao achar o pais', erro)
@@ -121,10 +120,56 @@ const obterInformacoesIcenland = () => {
     infoice.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
      <br> Region: ${region} <br> Capital: ${capital} `
      nomeIce.innerHTML = `${nomePais}`
-     console.log(data);
+   
   })
   .catch(erro => {
     console.error('erro ao achar o pais', erro)
   })
 }
 obterInformacoesIcenland();
+
+
+const obterInformacoesAfeganistao = () => {
+  const bandeiraafe = document.getElementById("bandeiraafe") as HTMLImageElement
+  const infoafe = document.getElementById("infoafe") as HTMLParagraphElement
+  const nomeafe = document.getElementById("nomeafe") as HTMLParagraphElement
+  fetch(`https://restcountries.com/v3.1/name/Afghanistan`)
+  .then(response => response.json())
+  .then(data => {
+    const {flags, population, region, capital, name} = data[0]
+    const nomePais = name.common
+    bandeiraafe.src = flags.png
+    console.log(data);
+    infoafe.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+     <br> Region: ${region} <br> Capital: ${capital} `
+     nomeafe.innerHTML = `${nomePais}`
+  })
+  .catch(erro => {
+    console.error('erro ao achar o pais', erro)
+  })
+}
+
+obterInformacoesAfeganistao();
+
+
+
+const informacoesAland = () => {
+  const bandeirais = document.getElementById("bandeirais") as HTMLImageElement
+  const infoinslaindia = document.getElementById("infoinslaindia") as HTMLParagraphElement
+  const nomeirais = document.getElementById("nomeirais") as HTMLParagraphElement
+  fetch(`https://restcountries.com/v3.1/name/Åland Islands`)
+  .then(response => response.json())
+  .then(data => {
+    const {flags, population, region, capital, name} = data[0]
+    const nomePais = name.common
+    bandeirais.src = flags.png
+    console.log(data);
+    infoinslaindia.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+     <br> Region: ${region} <br> Capital: ${capital} `
+     nomeirais.innerHTML = `${nomePais}`
+  })
+  .catch(erro => {
+    console.error('erro ao achar o pais', erro)
+  })
+}
+informacoesAland()
