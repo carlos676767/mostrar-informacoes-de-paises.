@@ -3,9 +3,7 @@ function checkBoxDarkMode() {
   const darkModeButton = document.getElementById("dark-mode-toggle") as HTMLInputElement;
   darkModeButton.addEventListener("change", () => {
     if (darkModeButton.checked) {
-      document.body.classList.add("dark-mode")
-      localStorage.setItem("minhaClasse","dark-mode")
-      document.body.classList.remove("white-mode")
+      setDarkMode();
     } else {
       document.body.classList.add("white-mode")
       localStorage.setItem("minhaClasse", "white-mode")
@@ -14,6 +12,13 @@ function checkBoxDarkMode() {
   });
 }
 checkBoxDarkMode();
+
+
+const setDarkMode = () => {
+  document.body.classList.add("dark-mode")
+  localStorage.setItem("minhaClasse","dark-mode")
+  document.body.classList.remove("white-mode")
+}
 
 const valoresSalvosDarkMode = () => {
   const recupararValorMode = localStorage.getItem("minhaClasse")
