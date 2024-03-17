@@ -134,6 +134,25 @@ img{
   margin-top: 30px
 };
 
+.paises{
+  display: flex;
+  margin-right: 20px;
+}
+
+.primeiraFileira .paises1 {
+  margin-right: 35px; 
+}
+
+.cards{
+  display: flex;
+}
+
+.primeiraFileira{
+  display: flex;
+  list-style: none;
+  margin-top: 30px
+};
+
 .paises1{
   display: flex;
   margin-right: 20px;
@@ -144,9 +163,29 @@ img{
 }
 
 
-#nomeGermany, #nomeEua, #nomeBrasil, #nomeIce, #nomeafe, #nomeirais, #nomeAlbania {
+#nomeGermany, #nomeEua, #nomeBrasil, #nomeIce, #nomeafe, #nomeirais, #nomeAlbania, #nomeAlgeria {
   display: flex;
   font-weight: bold;
   font-size: 15px;
 };
 
+
+
+.cards2{
+  display: flex;
+}
+
+.segundaFileira{
+  display: flex;
+  list-style: none;
+  margin-top: 30px
+};
+
+.paises2{
+  display: flex;
+  margin-right: 20px;
+}
+
+.segundaFileira .paises2 {
+  margin-right: 35px; 
+}

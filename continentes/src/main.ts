@@ -139,7 +139,6 @@ const obterInformacoesAfeganistao = () => {
     const {flags, population, region, capital, name} = data[0]
     const nomePais = name.common
     bandeiraafe.src = flags.png
-    console.log(data);
     infoafe.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
      <br> Region: ${region} <br> Capital: ${capital} `
      nomeafe.innerHTML = `${nomePais}`
@@ -163,7 +162,6 @@ const informacoesAland = () => {
     const {flags, population, region, capital, name} = data[0]
     const nomePais = name.common
     bandeirais.src = flags.png
-    console.log(data);
     infoinslaindia.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
      <br> Region: ${region} <br> Capital: ${capital} `
      nomeirais.innerHTML = `${nomePais}`
@@ -184,7 +182,6 @@ const informacoesAlbania = () => {
     const {flags, population, region, capital, name} = data[0]
     const nomePais = name.common
     bandeirAalbania.src = flags.png
-    console.log(data);
     infoAlgabania.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
      <br> Region: ${region} <br> Capital: ${capital} `
      nomeAlbania.innerHTML = `${nomePais}`
@@ -194,4 +191,26 @@ const informacoesAlbania = () => {
   })
 }
 
-informacoesAlbania()
+informacoesAlbania();
+
+const informacoesAlgeria = () => {
+  const bandeiraAlgeria = document.getElementById("bandeiraAlgeria") as HTMLImageElement
+  const infoAlgeria = document.getElementById("infoAlgeria") as HTMLParagraphElement
+  const nomeAlgeria = document.getElementById("nomeAlgeria") as HTMLParagraphElement
+  fetch(`https://restcountries.com/v3.1/name/ Algeria`)
+  .then(response => response.json())
+  .then(data => {
+    const {flags, population, region, capital, name} = data[0]
+    const nomePais = name.common
+    bandeiraAlgeria.src = flags.png
+    console.log(data);
+    infoAlgeria.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+     <br> Region: ${region} <br> Capital: ${capital} `
+     nomeAlgeria.innerHTML = `${nomePais}`
+  })
+  .catch(erro => {
+    console.error('erro ao achar o pais', erro)
+  })
+}
+
+informacoesAlgeria()
