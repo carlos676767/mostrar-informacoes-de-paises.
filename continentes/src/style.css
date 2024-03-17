@@ -55,3 +55,21 @@ input[type="checkbox"]:checked + .toggle-label::before {
 .white-mode {
   background-color: white;
 }
+
+
+/* header*/
+header{
+  display: flex;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#textoConhece {
+  font-weight: bold;
+  font-size: 14px;
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

@@ -4,33 +4,38 @@ function checkBoxDarkMode() {
     if (darkModeButton.checked) {
       setDarkMode();
     } else {
-      setWhiteMode()
+      setWhiteMode();
     }
   });
 }
 const setDarkMode = () => {
-  document.body.classList.add("dark-mode")
-  localStorage.setItem("minhaClasse","dark-mode")
-  document.body.classList.remove("white-mode")
+  document.body.classList.add("dark-mode");
+  localStorage.setItem("minhaClasse","dark-mode");
+  document.body.classList.remove("white-mode");
 }
 const setWhiteMode = () => {
-  document.body.classList.add("white-mode")
-  localStorage.setItem("minhaClasse", "white-mode")
-  document.body.classList.remove("dark-mode")
+  document.body.classList.add("white-mode");
+  localStorage.setItem("minhaClasse", "white-mode");
+  document.body.classList.remove("dark-mode");
 }
 const valoresSalvosDarkMode = () => {
-  const recupararValorMode = localStorage.getItem("minhaClasse")
+  const recupararValorMode = localStorage.getItem("minhaClasse");
   if (recupararValorMode === "dark-mode") {
     setDarkMode();
     salvarCheckBoxMarcado();
   }else{
     setWhiteMode();
+    naoSalvarDarkMode();
   }
 }
+const salvarCheckBoxMarcado = () => {
+  darkModeButton.checked = true;
+};
+
+const naoSalvarDarkMode = () => {
+  darkModeButton.checked = false;
+};
+
 checkBoxDarkMode();
 valoresSalvosDarkMode();
-
-const salvarCheckBoxMarcado = () => {
-  darkModeButton.checked = true
-}
 
