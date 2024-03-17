@@ -173,3 +173,25 @@ const informacoesAland = () => {
   })
 }
 informacoesAland()
+
+const informacoesAlbania = () => {
+  const bandeirAalbania = document.getElementById("bandeiraalbania") as HTMLImageElement
+  const infoAlgabania = document.getElementById("infoAlgabania") as HTMLParagraphElement
+  const nomeAlbania = document.getElementById("nomeAlbania") as HTMLParagraphElement
+  fetch(`https://restcountries.com/v3.1/name/albania`)
+  .then(response => response.json())
+  .then(data => {
+    const {flags, population, region, capital, name} = data[0]
+    const nomePais = name.common
+    bandeirAalbania.src = flags.png
+    console.log(data);
+    infoAlgabania.innerHTML = `Population: ${population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+     <br> Region: ${region} <br> Capital: ${capital} `
+     nomeAlbania.innerHTML = `${nomePais}`
+  })
+  .catch(erro => {
+    console.error('erro ao achar o pais', erro)
+  })
+}
+
+informacoesAlbania()
