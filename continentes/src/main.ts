@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 const darkModeButton = document.getElementById("dark-mode-toggle") as HTMLInputElement;
 const pesquisarPaises = document.getElementById("pesquisarPaises") as HTMLInputElement
 
@@ -270,3 +272,25 @@ const informacoesAlgeria = () => {
 }
 
 informacoesAlgeria()
+
+const botaoPesquisar = document.querySelector(".fa-solid") as HTMLElement
+ 
+const pesquisarContinentes = () => {
+  if (pesquisarPaises.value == "") {
+    mensagemValorVazio();
+  }
+}
+
+const mensagemValorVazio = () => {
+  Swal.fire({
+    title: 'Erro!',
+    text: 'O valor está vazio.',
+    icon: 'error',
+    confirmButtonText: 'OK'
+  });
+}
+
+
+botaoPesquisar.addEventListener("click", () => {
+ pesquisarContinentes();
+})
