@@ -56,7 +56,7 @@ const cards = document.querySelectorAll(".card-body")
 const cardsBlack = () => {
   cards.forEach(element => {
     element.classList.add("dark-mode");
-    console.log(element);
+
     element.classList.remove("white-mode");
   });
 }
@@ -264,7 +264,6 @@ const obterInformacoesAfeganistao = () => {
 obterInformacoesAfeganistao();
 
 
-
 const informacoesAland = () => {
   const bandeirais = document.getElementById("bandeirais") as HTMLImageElement
   const infoinslaindia = document.getElementById("infoinslaindia") as HTMLParagraphElement
@@ -301,7 +300,7 @@ const informacoesAlbania = () => {
   })
   .catch(erro => {
     console.error('erro ao achar o pais', erro)
-  })
+  }) 
 }
 
 informacoesAlbania();
@@ -327,3 +326,57 @@ const informacoesAlgeria = () => {
 
 informacoesAlgeria()
 
+let selecionarRegiao: any = null
+const buscarPorcontinentes = () => {
+  fetch(`https://restcountries.com/v3.1/region/${selecionarRegiao}`)
+ .then(response => response.json())
+ .then((data: any) => {
+  data.forEach((elements: any) => {
+    const {flags, population, region, capital, name} = elements
+
+    console.log(flags);
+    
+  });
+ })
+ .then(error => {
+  console.error(error);
+ })
+}
+
+
+const continentes = document.getElementById("continentes") as HTMLSelectElement
+const options = continentes.options
+continentes.addEventListener("change", () => {
+  if (options[0].selected) {
+    selecionarRegiao = "africa"
+    buscarPorcontinentes()
+    ocultarSection()
+  }else if (options[1].selected) {
+    selecionarRegiao = "americas"
+    buscarPorcontinentes()
+    ocultarSection()
+  }else if (options[2].selected) {
+    selecionarRegiao = "asia"
+    buscarPorcontinentes()
+    ocultarSection()
+  }else if (options[3].selected) {
+    selecionarRegiao = "europe"
+    buscarPorcontinentes()
+    ocultarSection()
+  }else{
+    selecionarRegiao = "oceania"
+    buscarPorcontinentes()
+    ocultarSection()
+  }
+});
+
+buscarPorcontinentes();
+
+const recarregar = document.getElementById("Recarregar") as HTMLButtonElement
+const recarregarPagina = () => {
+  location.reload();
+}
+
+recarregar.addEventListener("click", () => {
+  recarregarPagina();
+})
