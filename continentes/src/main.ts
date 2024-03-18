@@ -338,7 +338,8 @@ const criarCard = (): HTMLDivElement => {
   const card = document.createElement("div");
   card.classList.add("card");
   card.style.width = "13rem";
-  console.log(card);
+  card.style.marginLeft = "30px";
+  card.style.display = "inline-block"
   return card;
 };
 

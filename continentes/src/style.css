@@ -61,9 +61,11 @@ input[type="checkbox"]:checked + .toggle-label::before {
 header{
   display: flex;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  justify-content: space-around;
   width: 100%;
+  margin-top: 5px;
 }
 
 #textoConhece {
@@ -94,9 +96,27 @@ input, i{
 .inputBuscador{
   display: flex;
   margin-top: 10px;
-  margin-left: 30px;
+  margin-left: 50px;
 }
 
+
+
+#Recarregar{
+  border: none;
+  background-color: #007bff;
+  color: white;
+  width: 5%;
+}
+
+.fa-rotate-right{
+  border: none;
+  color: white;
+}
+
+
+.form-select-lg {
+  width: 20px; 
+}
 
 .labelinput{
   border: 1px solid;
@@ -105,7 +125,6 @@ input, i{
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
   width: 25%;
 }
-
 
 
 
