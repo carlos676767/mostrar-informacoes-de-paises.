@@ -327,25 +327,65 @@ const informacoesAlgeria = () => {
 informacoesAlgeria()
 
 let selecionarRegiao: any = null
+const criarImagem = (src: string): HTMLImageElement => {
+  const imagem = document.createElement("img");
+  imagem.classList.add("card-img-top");
+  imagem.src = src;
+  return imagem;
+};
+
+const criarCard = (): HTMLDivElement => {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.style.width = "13rem";
+  console.log(card);
+  return card;
+};
+
+const criarDiv = (): HTMLDivElement => {
+  return document.createElement("div");
+};
+
+const criarParagrafo = (texto: string): HTMLParagraphElement => {
+  const paragrafo = document.createElement("p");
+  paragrafo.classList.add("card-text");
+  paragrafo.innerHTML = texto;
+  return paragrafo;
+};
+
+const formatarNumero = (numero: number): string => {
+  return numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+};
+
+const adicionarElementoAoBody = (elemento: HTMLElement) => {
+  document.body.appendChild(elemento);
+};
+
 const buscarPorcontinentes = () => {
   fetch(`https://restcountries.com/v3.1/region/${selecionarRegiao}`)
- .then(response => response.json())
- .then((data: any) => {
-  data.forEach((elements: any) => {
-    const {flags, population, region, capital, name} = elements
-    const imagem = document.createElement("img") as HTMLImageElement
-    imagem.classList.add("card-img-top")
-    imagem.style.width = "13rem"
-    imagem.src = flags.png
-    document.body.appendChild(imagem)
-    
-  });
- })
- .then(error => {
-  console.error(error);
- })
-}
-
+    .then(response => response.json())
+    .then((data: any[]) => {
+      data.forEach((element: any) => {
+        const { flags, population, region, capital, name } = element;
+        const imagem = criarImagem(flags.png);
+        const card = criarCard();
+        const div2 = criarDiv();
+        card.appendChild(imagem);
+        div2.classList.add("card-body");
+        const nomePais = criarParagrafo(name.common);
+        div2.appendChild(nomePais);
+        const resultadoPesquisaPais = criarParagrafo(
+          `Population: ${formatarNumero(population)}<br>Region: ${region}<br>Capital: ${capital}`
+        );
+        div2.appendChild(resultadoPesquisaPais);
+        card.appendChild(div2);
+        adicionarElementoAoBody(card);
+      });
+    })
+    .catch(error => {
+      console.error(error);
+    });
+};
 
 const continentes = document.getElementById("continentes") as HTMLSelectElement
 const options = continentes.options
