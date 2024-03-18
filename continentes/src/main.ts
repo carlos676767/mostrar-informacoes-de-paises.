@@ -333,8 +333,11 @@ const buscarPorcontinentes = () => {
  .then((data: any) => {
   data.forEach((elements: any) => {
     const {flags, population, region, capital, name} = elements
-
-    console.log(flags);
+    const imagem = document.createElement("img") as HTMLImageElement
+    imagem.classList.add("card-img-top")
+    imagem.style.width = "13rem"
+    imagem.src = flags.png
+    document.body.appendChild(imagem)
     
   });
  })
